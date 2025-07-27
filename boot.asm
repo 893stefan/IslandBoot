@@ -1,4 +1,4 @@
-; boot.asm, a rudimentary bootloader for TeideOS
+; boot.asm - root file for the rudimentary bootloader IslandBoot
 
 BITS 16                 ; 16 bit ASM code
 ORG 0x7C00              ; BIOS charges this code at 0x7C00 after detecting MBR in disk
@@ -17,7 +17,7 @@ start:
 
 
 
-message db "TeideOS - Alpha 0.1", 0    ; message to show
+message db "IslandBoot - Alpha 1.0", 0    ; message to show
 
 times 510 - ($ - $$) db 0        ; making the bootloader 510 bytes
-dw 0xAA55                        ; MBR signature
+dw 0xAA55                        ; MBR end signature
