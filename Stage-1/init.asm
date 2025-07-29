@@ -4,6 +4,9 @@
 
 bits 16                 ; 16 bit ASM code (real mode)
 org 0x7C00              ; BIOS loads this code at 0x7C00 after detecting MBR in disk
+xor ax, ax              ; Clear ax
+mov ds, ax              ; Set data segment to 0
+mov es, ax              ; Set extra segment to 0
 
 ;----------------------------BODY-----------------------------------------------------------------;
 
@@ -39,8 +42,8 @@ ClearScreen:
 
 ;-----------------------DATA/VARIABLES------------------------------------------------------------;
 
-fetchinfo db "IslandBoot - Alpha 1.0", 13, 10    ; welcome message
-loadinfo db "Loading Stage 2...", 13, 10           ; pretty obvious what's going on here
+fetchinfo db "IslandBoot - Alpha 1.0", 13, 10, 0      ; welcome message
+loadinfo db "Loading Stage 2...", 13, 10, 0           ; pretty obvious what's going on here
 
 ;----------------------------END------------------------------------------------------------------;
 
