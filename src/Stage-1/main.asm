@@ -18,15 +18,14 @@ call PrintStr           ; prints loadinfo
 call HangCPU            ; calls our function to hang the CPU execution
 
 EntryPoint:
-   .setup-registers
-      xor ax, ax
-      mov ss, ax
-      mov ds, ax
-      mov es, ax
-      mov fs, ax
-      mov gs, ax
-      mov sp, EntryPoint
-      cld
+   xor ax, ax
+   mov ss, ax
+   mov ds, ax
+   mov es, ax
+   mov fs, ax
+   mov gs, ax
+   mov sp, EntryPoint
+   cld
    mov [disk], dl
 
 
