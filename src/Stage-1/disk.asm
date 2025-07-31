@@ -7,13 +7,13 @@ disk db 0x80                           ; we are reading the first disk
 
 ;----------------------------BODY-----------------------------------------------------------------;
 
-Real_mode_read_disk:
+ReadDisk:
     .start:
         cmp cx, 127
         jbe .good_size                 ; if cx <= 127, jump to good_size (127 bytes = int 13h limit)
         pusha                          ; pushes all GPR onto the stack, acting as a save state
         mov cx, 127
-        call Real_mode_read_disk       ; func called to read 127 sectors
+        call ReadDisk                  ; func called to read 127 sectors
         popa                           ; pops all GPR off the stack
         add eax, 127                   ; increment our LBA lower adress by 127
         add dx, 127 * 512 / 16         ; 127 sectors of 512 bytes, divided by a 16 bit offset (real mode)

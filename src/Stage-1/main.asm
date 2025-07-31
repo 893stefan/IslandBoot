@@ -1,4 +1,4 @@
-; init.asm - Stage 1 code for the rudimentary bootloader IslandBoot
+; main.asm - Stage 1 code for the rudimentary bootloader IslandBoot
 
 ;-----------------------INITIALISATION------------------------------------------------------------;
 
@@ -18,15 +18,17 @@ call PrintStr           ; prints loadinfo
 call HangCPU            ; calls our function to hang the CPU execution
 
 EntryPoint:
-   xor ax, ax
+   xor ax, ax           ; setting ax to 0
    mov ss, ax
    mov ds, ax
    mov es, ax
    mov fs, ax
-   mov gs, ax
+   mov gs, ax           ; ...then setting all segment registers to 0 as well
    mov sp, EntryPoint
    cld
    mov [disk], dl
+
+   call ReadDisk
 
 
 ;--------------------------INCLUDE----------------------------------------------------------------;
