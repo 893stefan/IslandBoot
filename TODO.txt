@@ -1,0 +1,5 @@
+TODO
+- comment all ASM files
+- write code to prepare paging
+- Remap PIC
+- enable long mode to allow us to load a x86_64 kernel
